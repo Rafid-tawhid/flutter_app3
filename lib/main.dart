@@ -10,50 +10,57 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: "TexBox & Dropdown",
+      home: book(),
+    );
+    
+  }
+}
 
-    home: Scaffold(
+class book extends StatefulWidget {
+  @override
+  _bookState createState() => _bookState();
+}
+
+class _bookState extends State<book> {
+  String namebook="";
+  var writers=["Rafid Tawhid","Hymayun","kobir","salman"];
+  var _currentItem='Rafid Tawhid';
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepOrange,
-        title: Text("List"),
-        actions: [
-          IconButton(icon: Icon(Icons.search), onPressed: (){}),
-          IconButton(icon: Icon(Icons.add_box), onPressed: (){}),
-        ],
+        title: Text("Stateful Widget"),
       ),
-      drawer: Drawer(
-        child: ListView(
+      body: Container(
+        margin: EdgeInsets.all(20),
+        child: Column(
           children: [
-            DrawerHeader(
-              child: Text("Flutter "),
-              decoration: BoxDecoration(
-                color: Colors.orange.shade700
-              ),
+            TextField(
+              onChanged: (String userinput)
+              {
+                setState(() {
+                  namebook=userinput;
+                });
+              },
             ),
-            ListTile(
-              title: Text("Learning from tube"),
-              onTap: (){},
-            ),
-            ListTile(
-              title: Text("Learning from books"),
-              onTap: (){},
-            ),
-            ListTile(
-              title: Text("Learning from doc"),
-              onTap: (){},
-            )
 
+             DropdownButton(items: writers.map((String dropdownitems){
+               return DropdownMenuItem(value: dropdownitems,child: Text(dropdownitems),);
+
+             }).toList(),
+               onChanged: (String newVal)
+               {
+                 setState(() {
+                   this._currentItem=newVal;
+                 });
+               },
+               value: _currentItem,),
+            Text("Enter book name is $namebook",style: TextStyle(fontSize: 20),)
           ],
         ),
       ),
-      backgroundColor: Colors.white,
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.youtube_searched_for_rounded),title: Text("youtube")),
-          BottomNavigationBarItem(icon: Icon(Icons.book),title: Text("books")),
-          BottomNavigationBarItem(icon: Icon(Icons.dock),title: Text("documentation")),
-        ],
-      ),
-    ),
     );
   }
 }
+
