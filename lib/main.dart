@@ -46,6 +46,13 @@ class MyApp extends StatelessWidget {
         ),
       ),
       backgroundColor: Colors.white,
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.youtube_searched_for_rounded),title: Text("youtube")),
+          BottomNavigationBarItem(icon: Icon(Icons.book),title: Text("books")),
+          BottomNavigationBarItem(icon: Icon(Icons.dock),title: Text("documentation")),
+        ],
+      ),
     ),
     );
   }
