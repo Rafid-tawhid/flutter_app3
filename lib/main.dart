@@ -1,73 +1,41 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app3/pg1.dart';
+import 'package:flutter_app3/pg2.dart';
+import 'package:flutter_app3/pg3.dart';
 
 
 void main() {
-  runApp(registration());
+  runApp(MyApp());
 }
 
-class registration extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  PageController _controller=PageController(
+    initialPage: 0
+  );
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SafeArea(
-        child: Scaffold(
-       appBar: AppBar(title: Text("Row & Column"),),
-          body: ListView(
-            children: [
-              Column(
-                children: [
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.deepPurple,
-                  ),
-                  SizedBox(height: 10,),
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.red,
-                  ),
-                  SizedBox(height: 10,),
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.yellow,
-                  ),
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.red,
-                  ),
-                  SizedBox(height: 10,),
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.blueAccent,
-                  ),
-                  SizedBox(
-                      height: 10,),
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.green,
-                  ),
-                  SizedBox(height: 10,),
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.deepPurpleAccent,
-                  ),
-                  SizedBox(height: 10,),
+      home: Scaffold(
+        body: PageView(
+          controller: _controller,
 
-                ],
-              ),
-            ],
-          ),
+          children: [
+            page1(),
+            page2(),
+            page3(),
+          ],
         ),
       ),
     );
   }
 }
+
+
+
 
