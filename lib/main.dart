@@ -13,20 +13,28 @@ class registration extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
-          body: Container(
-            height: 200,
-            width: 350,
-            decoration: BoxDecoration(color: Colors.deepOrange),
-            child: Center(
-              child: Text(
-                "I love coding",
-                style: TextStyle(
-                  fontSize: 22,
-                  color: Colors.deepPurple,
-
-                ),
+       appBar: AppBar(title: Text("Row & Column"),),
+          body: Row(
+            children: [
+              Container(
+                height: 100,
+                width: 100,
+                color: Colors.deepPurple,
               ),
-            ),
+              SizedBox(width: 10,),
+              Container(
+                height: 100,
+                width: 100,
+                color: Colors.red,
+              ),
+              SizedBox(width: 10,),
+              Container(
+                height: 100,
+                width: 100,
+                color: Colors.yellow,
+              )
+
+            ],
           ),
         ),
       ),
