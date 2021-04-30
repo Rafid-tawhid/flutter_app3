@@ -14,23 +14,34 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "ListView",
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("This is Appbar"),
-        ),
-        body: ListView.separated(
-            itemCount: parts.length,
-            itemBuilder: (BuildContext context,int index){
-          return ListTile(
-            title: Text(parts[index],style: TextStyle(fontSize: 20),)
-          );
-
-        },
-
-            separatorBuilder: (BuildContext context,int index) =>Divider(),
+      title: "Routes & Navigation",
+      home: RoutesA(),
+    );
+  }
+}
+class RoutesA extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Route A"),),
+      body: Center(
+        child: RaisedButton(child: Text("Navigate"),onPressed: (){
+          Navigator.push(context, MaterialPageRoute(
+            builder: (context)=>RoutesB()
+          ));
+        },),
+      )
+    );
+  }
+}
+class RoutesB extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(title: Text("Route A"),),
+        body: Center(
+          child: Text("Welcome to screen B",style: TextStyle(fontSize: 20),),
         )
-      ),
     );
   }
 }
