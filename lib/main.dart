@@ -1,40 +1,44 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app3/pg1.dart';
-import 'package:flutter_app3/pg2.dart';
-import 'package:flutter_app3/pg3.dart';
+
+
+
 
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  PageController _controller=PageController(
-    initialPage: 0
-  );
+class MyApp extends StatelessWidget {
+  List<String> parts=["keyboard","mouse","monitor","headphone","scissors","salt","pendrive","chanachur","keyboard","mouse","monitor","headphone","scissors","salt","pendrive","chanachur"];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: "ListView",
       home: Scaffold(
-        body: PageView(
-          controller: _controller,
-
-          children: [
-            page1(),
-            page2(),
-            page3(),
-          ],
+        appBar: AppBar(
+          title: Text("This is Appbar"),
         ),
+        body: ListView.separated(
+            itemCount: parts.length,
+            itemBuilder: (BuildContext context,int index){
+          return ListTile(
+            title: Text(parts[index],style: TextStyle(fontSize: 20),)
+          );
+
+        },
+
+            separatorBuilder: (BuildContext context,int index) =>Divider(),
+        )
       ),
     );
   }
 }
+
+
+
+
+
 
 
 
